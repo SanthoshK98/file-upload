@@ -28,7 +28,12 @@ app.post('/deleteuser/:id',(req,res)=>{
     const newUser = Users.filter((each)=>{
         return each.id !== req.params.id
     })
-    return res.json({message:"successfully deleted"})
+    if(newUser){
+        return res.json({message:"successfully deleted"})
+    }else{
+        return res.json({message:"user not deleted"})
+    }
+    
 })
 
 app.get('/getusers',(req,res)=>{
